@@ -2,7 +2,7 @@
 
 Agentic AI Researcher is an **agentic AI automation project** that demonstrates how autonomous agents can search, read, reason over academic literature, and generate structured research-style documents.
 
-> **Important Note**
+> **Important Note:**
 > This project is built **for demonstration, learning, and prototyping purposes only**. It should **not be used for actual academic publishing** without thorough human review, validation of citations, and originality checks.
 
 ## What This Project Demonstrates
@@ -23,7 +23,7 @@ This project is ideal for:
 
 Below is an example of a generated research document produced by the system:
 
-![Generated Research Example](Example of Generated Doc/image.png)
+![Generated Research Example](Example%20of%20Generated%20Doc/image.png)
 
 The example folder also contains the generated LaTeX (`.tex`) and compiled PDF files.
 
