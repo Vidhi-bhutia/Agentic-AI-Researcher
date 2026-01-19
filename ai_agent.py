@@ -17,7 +17,7 @@ tool_node = ToolNode(tools)
 
 import os
 from langchain_google_genai import ChatGoogleGenerativeAI
-model = ChatGoogleGenerativeAI(model="gemini-2.5-flash-lite", api_key=os.getenv("GEMINI_API_KEY"))
+model = ChatGoogleGenerativeAI(model="gemini-3-flash-preview", api_key=os.getenv("GEMINI_API_KEY"))
 model=model.bind_tools(tools)
 
 from langgraph.graph import END, START, StateGraph
