@@ -5,10 +5,10 @@ import xml.etree.ElementTree as ET
 
 def search_arxiv_papers(topic: str, max_results: int=5) -> dict:
     query = "+".join(topic.lower().split())
-    for char in list('()" '):
-        if char in query:
-            print(f"Inavlid character '{char}' in query: {query}")
-            raise ValueError(f"Cannot have character '{char}' in query: {query}")
+    sanitized = query.translate(str.maketrans("", "", "()-\" "))
+    if sanitized != query:
+        print(f"Removed invalid characters from query: '{query}' -> '{sanitized}'")
+    query = sanitized
     url = (
         "https://export.arxiv.org/api/query"
         f"?search_query=all:{query}"
