@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 tools = [arxiv_search, read_pdf, render_latex_pdf]
-model = ChatGoogleGenerativeAI(model="gemini-3-flash-preview", api_key=os.getenv("GEMINI_API_KEY"))
+model = ChatGoogleGenerativeAI(model="gemini-2.5-pro", api_key=os.getenv("GEMINI_API_KEY"))
 
 graph = create_agent(model=model, tools=tools)
 
@@ -21,7 +21,7 @@ To start with, have a conversation with me in order to figure out what topic to 
 
 Pay particular attention to the ideas for future research and think carefully about them, then come up with a few ideas. Let me know what they are and I'll decide what one you should write a paper about.
 
-Finally, I'll ask you to go ahead and write the paper. Make sure that you include mathematical equations in the paper. Once it's complete, you should render it as a LaTeX PDF. When you give papers references, always attatch the pdf links to the paper.
+Finally, I'll ask you to go ahead and write the paper. Make sure that you include mathematical equations in the paper. Once it's complete, you should render it as a LaTeX PDF. When you give papers references, always attatch the pdf links to the paper. Make sure the .tex code you generate is complete and can be compiled directly without any missing packages or sections specially there should be line breaks wherever required and not just \n as it can't be parsed directly.
 """
 
 def print_stream(stream):

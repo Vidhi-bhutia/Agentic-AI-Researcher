@@ -17,7 +17,7 @@ tool_node = ToolNode(tools)
 
 import os
 from langchain_google_genai import ChatGoogleGenerativeAI
-model = ChatGoogleGenerativeAI(model="gemini-3-flash-preview", api_key=os.getenv("GEMINI_API_KEY"))
+model = ChatGoogleGenerativeAI(model="gemini-2.5-flash-lite", api_key=os.getenv("GEMINI_API_KEY"))
 model=model.bind_tools(tools)
 
 from langgraph.graph import END, START, StateGraph
@@ -42,7 +42,7 @@ workflow.add_edge("tools", "agent")
 
 from langgraph.checkpoint.memory import MemorySaver
 checkpointer = MemorySaver()
-config={"configurable": {"thread_id": 2}}
+config={"configurable": {"thread_id": 22}}
 graph = workflow.compile(checkpointer=checkpointer)
 
 INITIAL_PROMPT="""
@@ -63,15 +63,15 @@ def print_stream(stream):
         print(f"Message received: {message.content[:200]}...")
         message.pretty_print()  
 
-while True:
-    user_input = input("User: ")
-    if user_input:
-        messages=[
-            {"role":"system", "content": INITIAL_PROMPT},
-            {"role":"user", "content": user_input}
-        ]
-        input_data={
-            "messages": messages
-        }
-        print_stream(graph.stream(input_data, config, stream_mode="values"))
+# while True:
+#     user_input = input("User: ")
+#     if user_input:
+#         messages=[
+#             {"role":"system", "content": INITIAL_PROMPT},
+#             {"role":"user", "content": user_input}
+#         ]
+#         input_data={
+#             "messages": messages
+#         }
+#         print_stream(graph.stream(input_data, config, stream_mode="values"))
 
